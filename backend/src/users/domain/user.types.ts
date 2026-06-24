@@ -12,9 +12,15 @@ export interface AuthUser {
   email: string;
 }
 
+export interface AuthSession {
+  id: string;
+  email: string;
+  access_token: string;
+  refresh_token: string;
+}
+
 export interface CreateUserProfileData {
   userId: string;
   fullName: string;
-  role: string;
   orgName: string;
 }

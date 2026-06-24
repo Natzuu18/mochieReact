@@ -9,5 +9,6 @@ export const registerUser = async (data: RegisterUserDto) => {
 export const loginUser= async(data: LoginUserDto)=>{
   const response = await api.post('/users/login',data);
   console.log("Response of LogingIn", response.data)
+  alert("Logged IN Successfully");
   return response.data;
 }

@@ -1,6 +1,7 @@
 import { Inject,Injectable,BadRequestException,UnauthorizedException } from "@nestjs/common";
 import { AuthRepository } from "../domain/auth.repository";
 
+
 @Injectable()
 export class SupabaseAuthRepository
   implements AuthRepository {
@@ -48,9 +49,18 @@ export class SupabaseAuthRepository
       );
     }
 
+    if (!data.session) {
+      throw new UnauthorizedException(
+        'Missing authentication session',
+      );
+    }
+
     return {
       id: data.user.id,
       email: data.user.email,
+      access_token: data.session.access_token,
+      refresh_token: data.session.refresh_token,
     };
   }
+
 }

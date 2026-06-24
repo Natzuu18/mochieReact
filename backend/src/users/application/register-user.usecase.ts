@@ -19,14 +19,6 @@ export class RegisterUserUseCase {
 
   async execute(input: RegisterUserInput) {
 
-    const validRoles = ['Admin', 'Staff'];
-
-    if (!validRoles.includes(input.role)) {
-      throw new BadRequestException(
-        'Invalid role',
-      );
-    }
-
     const authUser =
       await this.authRepository.signUp(
         input.email,
@@ -36,7 +28,6 @@ export class RegisterUserUseCase {
     await this.userRepository.createProfile({
       userId: authUser.id,
       fullName: input.fullName,
-      role: input.role,
       orgName: input.orgName,
     });
 

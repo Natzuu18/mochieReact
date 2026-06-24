@@ -1,5 +1,5 @@
+
 export interface RegisterUserInput {
-  userId:string;
   email: string;
   password: string;
   role: string;

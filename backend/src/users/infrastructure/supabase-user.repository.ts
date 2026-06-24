@@ -22,7 +22,6 @@ export class SupabaseUserRepository
         .insert({
           user_id: data.userId,
           full_name: data.fullName,
-          role: data.role,
           org_name: data.orgName,
         });
 

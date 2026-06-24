@@ -9,7 +9,7 @@ import { useEffect,useState } from 'react';
 
  export default function CustomerHome(){
     const[fullName,setFullName]= " ";
-
+    
     
     return(
         <div className="w-full flex flex-col justify-start pt-5 items-center h-screen bg-black p-0 ">

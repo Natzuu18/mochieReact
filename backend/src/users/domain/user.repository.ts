@@ -8,6 +8,7 @@ export interface UserRepository {
     data: CreateUserProfileData,
   ): Promise<void>;
 
+
   findById(
     id: string,
   ): Promise<User | null>;

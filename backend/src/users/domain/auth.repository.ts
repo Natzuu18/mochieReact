@@ -1,4 +1,4 @@
-import { AuthUser } from './user.types';
+import { AuthSession, AuthUser } from './user.types';
 
 export interface AuthRepository {
   signUp(
@@ -9,5 +9,5 @@ export interface AuthRepository {
   login(
     email: string,
     password: string,
-  ): Promise<AuthUser>;
+  ): Promise<AuthSession>;
 }

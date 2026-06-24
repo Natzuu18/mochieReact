@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { loginUser } from '../infrastructure/api/user.service';
 import type { LoginUserDto } from '../infrastructure/api/types/types';
 
+
 export const useLoginUser = ()=>{
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+ 
 
     const login = async (data: LoginUserDto) => {
       try {

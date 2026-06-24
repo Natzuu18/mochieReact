@@ -22,6 +22,7 @@ function SignUpModal(
   const { register, loading, error } = useRegisterUser();
   const [email,setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const[fullName,setFullName]=useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [org, setOrg] = useState("");
 
@@ -35,9 +36,10 @@ function SignUpModal(
 
     try{
        await register({
+        fullName,
         email,
         password,
-        organizationName: org,
+        orgName: org,
       });
       
       
@@ -53,6 +55,8 @@ function SignUpModal(
       <h1 className="text-xl font-semibold">Sign Up</h1>
       <label className="self-start ml-22 mt-10">Email</label>
       <input type="email" className="border-gray-950 border-2 rounded-sm" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+      <label className="self-start ml-22 ">Full Name</label>
+      <input type="text" className="border-gray-950 border-2 rounded-sm" value={fullName} onChange={(e)=>setFullName(e.target.value)}/>
       <label className="self-start ml-22">Password</label>
       <input type="password" id="passID" className="border-gray-950 border-2 rounded-sm" value={password} onChange={(e)=>setPassword(e.target.value)}/>
       <label className="self-start ml-22">Confirm Password</label>
@@ -87,16 +91,12 @@ function LoginModal({ setLoggingIn }: LoginModalProps) {
     e.preventDefault();
     
     try{
-      const result = await login({
+      await login({
          email,
          password,
       });
 
-      localStorage.setItem(
-        'token',
-        result.session.access_token
-      );
-        navigate('/customer/home')
+      navigate('/customer/home')
 
      
     }catch(error){

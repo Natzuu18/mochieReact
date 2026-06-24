@@ -1,7 +1,8 @@
 export interface RegisterUserDto {
   email: string;
   password: string;
-  organizationName: string;
+  fullName:string;
+  orgName: string;
 }
 export interface LoginUserDto{
 email:string;
