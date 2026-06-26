@@ -1,7 +1,7 @@
 import { Inject,Injectable,BadRequestException,InternalServerErrorException } from "@nestjs/common";
 import { extname } from "path";
-import { UserRepository } from "../domain/user.repository";
-import { CreateUserProfileData } from "../domain/user.types";
+import { UserRepository } from "../domain/repositories/user.repository";
+import { CreateUserProfileData } from "../domain/entities/user.types";
 
 @Injectable()
 export class SupabaseUserRepository
@@ -41,5 +41,16 @@ export class SupabaseUserRepository
         .single();
 
     return data;
+  }
+
+  async getCurrentProfile(){
+    const {data}=
+    await this.supabase
+      .from('users')
+      .select('*')
+      .single();
+
+      return data;
+
   }
 }

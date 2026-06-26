@@ -3,8 +3,8 @@ import {
   Injectable,
   BadRequestException,
 } from '@nestjs/common';
-import type { AuthRepository } from '../domain/auth.repository';
-import type { UserRepository } from '../domain/user.repository';
+import type { AuthRepository } from '../domain/repositories/auth.repository';
+import type { UserRepository } from '../domain/repositories/user.repository';
 import type { RegisterUserInput } from './inputs/register-user.input';
 
 @Injectable()

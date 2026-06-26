@@ -4,7 +4,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { LoginUserInput } from './inputs/login-user.input';
-import type { AuthRepository } from '../domain/auth.repository';
+import type { AuthRepository } from '../domain/repositories/auth.repository';
 
 @Injectable()
 export class LoginUserUseCase{

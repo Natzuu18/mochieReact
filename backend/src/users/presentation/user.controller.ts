@@ -1,14 +1,18 @@
 import {
   Body,
   Controller,
+  Get,
   Post,
+  Req,
   Res,
+  UnauthorizedException,
 } from '@nestjs/common';
 
-import type { Response } from 'express';
+import type { Request, Response } from 'express';
 
 import { RegisterUserUseCase } from '../application/register-user.usecase';
 import { LoginUserUseCase } from '../application/login-user.usecase';
+import { GetUserUseCase } from '../application/get-user.usecase';
 
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -17,10 +21,9 @@ import { LoginUserDto } from './dto/login-user.dto';
 export class UserController {
 
   constructor(
-    private readonly registerUserUseCase:
-      RegisterUserUseCase,
-    private readonly loginUserUseCase : 
-      LoginUserUseCase,
+    private readonly registerUserUseCase: RegisterUserUseCase,
+    private readonly loginUserUseCase: LoginUserUseCase,
+    private readonly getUserUseCase : GetUserUseCase,
   ) {}
 
   @Post('register')
@@ -67,4 +70,17 @@ export class UserController {
     email: auth.email,
   };
   }
+
+  @Get('me')
+  async getCurrentUser(
+    @Req() req: Request,
+  ){
+    const user =await this.getUserUseCase.execute(
+      req.cookies.id
+    );
+
+  return user;
+  }
+
+
 }

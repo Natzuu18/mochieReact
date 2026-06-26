@@ -182,3 +182,26 @@
     border-right-color: var(--border);
   }
 }
+
+@keyframes flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(430%);
+  }
+}
+
+.animate-flow {
+  animation: flow 2.5s linear infinite;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+

@@ -1,6 +1,6 @@
-import { Inject,Injectable,BadRequestException,UnauthorizedException } from "@nestjs/common";
-import { AuthRepository } from "../domain/auth.repository";
-
+import { Inject, Injectable, BadRequestException, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { AuthRepository } from '../domain/repositories/auth.repository';
 
 @Injectable()
 export class SupabaseAuthRepository
@@ -9,6 +9,7 @@ export class SupabaseAuthRepository
   constructor(
     @Inject('SUPABASE')
     private readonly supabase: any,
+    private readonly configService: ConfigService,
   ) {}
 
   async signUp(
@@ -62,5 +63,6 @@ export class SupabaseAuthRepository
       refresh_token: data.session.refresh_token,
     };
   }
+
 
 }

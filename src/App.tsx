@@ -168,9 +168,9 @@ export default function Home(){
       <header className="flex justify-center items-center rounded-bl-2xl rounded-tr-2xl border-black bg-black p-2 w-1/2">
         <div className="flex items-center justify-start "> 
           <ShihTzuIcon className="w-16 h-16"/>
-          <h1 className="text-lg font-mono bg-gradient-to-r from-purple-700 to-purple-200 bg-clip-text text-transparent">
-              MochieAI
-          </h1>
+                <h1 className="text-lg font-mono font-semibold bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
+                    MochieAI
+                </h1>
         </div>
         <div className="flex items-center justify-end w-full gap-5">
           <div className=" hover:scale-110">

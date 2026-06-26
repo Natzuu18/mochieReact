@@ -7,9 +7,9 @@ export interface User {
   createdDate: string;
 }
 
-export interface AuthUser {
-  id: string;
-  email: string;
+export interface AuthUser{
+    id:string,
+    email: string,
 }
 
 export interface AuthSession {
@@ -24,3 +24,5 @@ export interface CreateUserProfileData {
   fullName: string;
   orgName: string;
 }
+
+
