@@ -42,7 +42,7 @@ import { useGetCurrentUser } from '../../hooks/useGetCurrentUser';
                     </div>
                 </div>
             </div>
-            <div className='w-full h-full flex justify-start items-center gap-2 p-4 m-1 '>
+            <div className='w-full h-full flex justify-start items-center p-4 m-1 '>
                 <div className='rounded-2xl h-full min-w-1/20 bg-gradient-to-b from-gray-700/60 via-black/10 to-violet-700/20 backdrop-blur-md backdrop-saturate-150  flex flex-col justify-between items-center  '>
                     <div className='py-10 px-2 flex flex-col gap-8'>
                     <FontAwesomeIcon icon={faHouse} className='text-gray-400 text-xl p-1 hover:text-violet-700' onClick={()=>{}}/>
