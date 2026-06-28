@@ -9,7 +9,5 @@ export interface Document{
 
 export interface DocumentInput {
   name: string;
-  size: number;
-  mimeType: string;
-  blob: Blob;
+  row_size: number;
 }
