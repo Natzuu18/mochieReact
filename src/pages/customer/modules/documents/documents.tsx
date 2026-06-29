@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDebian} from "@fortawesome/free-brands-svg-icons";
-import { faBookOpen, faBookOpenReader, faCircleCheck, faCircleExclamation, faFileCirclePlus, faPaperclip, faQrcode, faRectangleList, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleExclamation, faFileCirclePlus, faPaperclip, faQrcode, faXmark } from "@fortawesome/free-solid-svg-icons";
+import api from "../../../../infrastructure/api/axios";
 
 
 type isAddingFile = {
@@ -41,6 +42,25 @@ let InsertDocumentModal = ({setFile}:isAddingFile) =>{
     const openFilePicker = () => {
         fileInputRef.current?.click();
     };
+
+    const handleImport = async () => {
+        if (files.length === 0) return;
+
+        const formData = new FormData();
+        files.forEach((file) => formData.append('files', file));
+
+        try {
+            await api.post('/documents/upload', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+            alert('Files uploaded successfully');
+            setFile(false);
+        } catch (error) {
+            console.error(error);
+            alert('Failed to upload files');
+        }
+    };
+
     return(
         <>
         <div className="w-100 h-100 bg-white z-10 absolute text-black right-8 top-20 rounded-sm flex flex-col justify-start items-center">
@@ -79,7 +99,7 @@ let InsertDocumentModal = ({setFile}:isAddingFile) =>{
                 <button className="rounded-md border-2 border-gray-300 p-1 px-4">
                     Cancel
                 </button>
-                <button className="rounded-md bg-black p-1 px-4 text-white">
+                <button className="rounded-md bg-black p-1 px-4 text-white" onClick={handleImport}>
                     Import
                 </button>
             </div>

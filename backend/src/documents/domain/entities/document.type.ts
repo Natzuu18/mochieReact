@@ -10,4 +10,10 @@ export interface Document{
 export interface DocumentInput {
   name: string;
   row_size: number;
+  storage_url:string;
+  uploaded_by?: string;
+}
+
+export interface StorageUrlReturn{
+  storageUrl:string;
 }

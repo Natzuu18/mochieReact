@@ -1,5 +1,4 @@
-import { Inject,Injectable,BadRequestException,InternalServerErrorException } from "@nestjs/common";
-import { extname } from "path";
+import { Inject,Injectable,BadRequestException} from "@nestjs/common";
 import { UserRepository } from "../domain/repositories/user.repository";
 import { CreateUserProfileData } from "../domain/entities/user.types";
 

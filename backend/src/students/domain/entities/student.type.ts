@@ -1,17 +1,17 @@
 export interface student{
-    id:string;
-    stud_num:string;
-    firstName:string;
-    middleName:string;
-    lastName:string;
+    student_id:string;
+    student_number:string;
+    firstname:string;
+    middlename:string;
+    lastname:string;
     sex:string;
-    bday:string;
+    birthdate:string;
     course:string;
-    level:number;
+    year_level:number;
     section:string;
     email:string;
     address:string;
-    contact:string;
+    contact_number:string;
 }
 
 
