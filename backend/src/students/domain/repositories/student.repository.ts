@@ -1,7 +1,7 @@
-import { student } from "../entities/student.type";
+import { insertStudent } from "../entities/student.type";
 
 export interface StudentRepository{
-    insertExtractStudent(
-        student:student[],
+    insertExtractedStudent(
+        student:insertStudent[],
     ):Promise<void>
 }

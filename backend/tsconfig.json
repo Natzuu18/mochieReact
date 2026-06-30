@@ -17,7 +17,7 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "multer"],
     "ignoreDeprecations": "6.0"
   },
   "include": ["src/**/*"],

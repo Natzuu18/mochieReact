@@ -10,7 +10,7 @@ export class SupabaseDocumentRepository
             private readonly supabase:any
         ){}
 
-        async insertDocument(files: DocumentInput[]): Promise<void> {
+        async insertDocument(files: DocumentInput[]): Promise<string[]> {
             let uploadedBy: string | undefined;
 
             try {
@@ -30,12 +30,18 @@ export class SupabaseDocumentRepository
                 ...(uploadedBy || file.uploaded_by ? { uploaded_by: uploadedBy ?? file.uploaded_by } : {}),
             }));
 
-            const { error } = await this.supabase
+            const {data, error } = await this.supabase
                 .from('excel_imports')
-                .insert(payload);
+                .insert(payload)
+                .select('import_id');
+   
+             
 
             if (error) {
                 throw new BadRequestException(error.message);
             }
+
+           return (data ?? []).map((row: { import_id: string }) => row.import_id);
+        
         }
     }
